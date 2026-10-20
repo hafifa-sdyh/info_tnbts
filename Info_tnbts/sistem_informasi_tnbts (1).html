@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Informasi Resmi Taman Nasional Bromo Tengger Semeru (TNBTS)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Tailwind Styling and Color Palette -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        skybrand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        naturegreen: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(12, 74, 110, 0.6) 0%, rgba(2, 132, 199, 0.4) 50%, rgba(255, 255, 255, 1) 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .badge-pulse {
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-skybrand-500 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-skybrand-900 text-white text-xs md:text-sm py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-3">
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-naturegreen-500 text-white">
+                    <i class="fa-solid fa-volcano mr-1"></i> Status Vulkanik: Level II (Waspada)
+                </span>
+                <span class="hidden md:inline text-skybrand-100">Patuhi radius aman 1 km dari Kawah Bromo</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="tel:08113610000" class="hover:text-skybrand-100 transition flex items-center gap-1">
+                    <i class="fa-solid fa-phone text-naturegreen-500"></i> Call Center: 0811-3610-000
+                </a>
+                <span class="text-skybrand-700">|</span>
+                <a href="#kontak" class="hover:text-skybrand-100 transition">Bantuan Darurat</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-skybrand-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Brand Title -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-skybrand-600 to-naturegreen-500 flex items-center justify-center text-white shadow-md shadow-skybrand-600/20 group-hover:scale-105 transition">
+                        <i class="fa-solid fa-mountain-sun text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold text-skybrand-900 tracking-tight block leading-none">TNBTS</span>
+                        <span class="text-xs font-medium text-naturegreen-700 tracking-wider">Bromo Tengger Semeru</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-700">
+                    <a href="#beranda" class="hover:text-skybrand-600 transition">Beranda</a>
+                    <a href="#layanan" class="hover:text-skybrand-600 transition">Layanan</a>
+                    <a href="#status" class="hover:text-skybrand-600 transition">Status Kawasan</a>
+                    <a href="#tiket" class="hover:text-skybrand-600 transition">Harga Tiket</a>
+                    <a href="#destinasi" class="hover:text-skybrand-600 transition">Destinasi Wisata</a>
+                    <a href="#cuaca-keselamatan" class="hover:text-skybrand-600 transition">Cuaca & SOP</a>
+                    <a href="#kontak" class="hover:text-skybrand-600 transition">Kontak</a>
+                </div>
+
+                <!-- Action Button Desktop -->
+                <div class="hidden sm:flex items-center space-x-3">
+                    <a href="#booking-section" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-skybrand-600 to-naturegreen-600 hover:from-skybrand-700 hover:to-naturegreen-700 text-white text-sm font-bold shadow-lg shadow-skybrand-600/30 hover:shadow-xl transition transform active:scale-95 flex items-center gap-2">
+                        <i class="fa-solid fa-ticket"></i> Booking Online
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Hamburger Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-700 hover:text-skybrand-600 hover:bg-skybrand-50 focus:outline-none" aria-label="Buka Menu Navigation">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-3">
+            <a href="#beranda" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-skybrand-50 hover:text-skybrand-600">Beranda</a>
+            <a href="#layanan" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-skybrand-50 hover:text-skybrand-600">Layanan & Permohonan</a>
+            <a href="#status" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-skybrand-50 hover:text-skybrand-600">Status Operasional</a>
+            <a href="#tiket" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-skybrand-50 hover:text-skybrand-600">Tarif Tiket Masuk</a>
+            <a href="#destinasi" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-skybrand-50 hover:text-skybrand-600">Destinasi Wisata</a>
+            <a href="#cuaca-keselamatan" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-skybrand-50 hover:text-skybrand-600">Info Cuaca & Keselamatan</a>
+            <a href="#kontak" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-skybrand-50 hover:text-skybrand-600">Kontak & Lokasi</a>
+            <div class="pt-2">
+                <a href="#booking-section" class="mobile-nav-link block w-full text-center px-4 py-3 rounded-xl bg-skybrand-600 text-white font-bold shadow-md">
+                    <i class="fa-solid fa-ticket mr-1"></i> Pesan Tiket Online
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative min-h-[88vh] flex items-center justify-center bg-slate-900 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <img src="https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=1920&q=80" 
+             alt="Pemandangan Sunrise Gunung Bromo Tengger Semeru" 
+             class="absolute inset-0 w-full h-full object-cover object-center opacity-85"
+             onerror="this.src='https://images.unsplash.com/photo-1541088719803-0998b921414a?auto=format&fit=crop&w=1920&q=80'">
+        
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-skybrand-900/40"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center z-10">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs sm:text-sm font-medium mb-6 animate-bounce">
+                <i class="fa-solid fa-award text-amber-400"></i>
+                <span>Sistem Informasi resmi Balai Besar TNBTS</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-4xl mx-auto drop-shadow-md">
+                Jelajahi Keajaiban Alam <br class="hidden sm:inline">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-white to-naturegreen-400">Bromo Tengger Semeru</span>
+            </h1>
+
+            <p class="mt-6 text-base sm:text-lg lg:text-xl text-sky-100 max-w-2xl mx-auto leading-relaxed font-normal">
+                Pusat portal informasi terpadu, booking tiket online resmi, kondisi terkini cuaca, serta regulasi keselamatan pengunjung kawasan konservasi TNBTS.
+            </p>
+
+            <!-- Quick Action CTA Buttons -->
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#booking-section" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-skybrand-500 to-naturegreen-500 hover:from-skybrand-600 hover:to-naturegreen-600 text-white font-extrabold text-base shadow-lg shadow-skybrand-500/30 transition transform hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-ticket text-lg"></i>
+                    <span>Pesan Tiket Sekarang</span>
+                </a>
+                <a href="#destinasi" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold text-base transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-compass"></i>
+                    <span>Eksplor Destinasi</span>
+                </a>
+            </div>
+
+            <!-- Live Stats Grid -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
+                <div class="p-4 rounded-2xl glass-card border border-white/40 shadow-sm">
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Luas Kawasan</div>
+                    <div class="text-xl sm:text-2xl font-bold text-skybrand-900 mt-1">50.253 Ha</div>
+                    <div class="text-xs text-naturegreen-700 font-medium mt-1"><i class="fa-solid fa-tree mr-1"></i>Hutan Konservasi</div>
+                </div>
+                <div class="p-4 rounded-2xl glass-card border border-white/40 shadow-sm">
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Ketinggian Bromo</div>
+                    <div class="text-xl sm:text-2xl font-bold text-skybrand-900 mt-1">2.329 MDPL</div>
+                    <div class="text-xs text-skybrand-600 font-medium mt-1"><i class="fa-solid fa-volcano mr-1"></i>Kawah Aktif</div>
+                </div>
+                <div class="p-4 rounded-2xl glass-card border border-white/40 shadow-sm">
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Puncak Semeru</div>
+                    <div class="text-xl sm:text-2xl font-bold text-skybrand-900 mt-1">3.676 MDPL</div>
+                    <div class="text-xs text-amber-600 font-medium mt-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Atap Pulau Jawa</div>
+                </div>
+                <div class="p-4 rounded-2xl glass-card border border-white/40 shadow-sm">
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Suku Asli</div>
+                    <div class="text-xl sm:text-2xl font-bold text-skybrand-900 mt-1">Suku Tengger</div>
+                    <div class="text-xs text-naturegreen-700 font-medium mt-1"><i class="fa-solid fa-dharmachakra mr-1"></i>Upacara Yadnya Kasada</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tiga Layanan Utama Section -->
+    <section id="layanan" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="text-xs font-bold uppercase tracking-widest text-naturegreen-600 bg-naturegreen-50 px-3 py-1 rounded-full border border-naturegreen-200">
+                    Layanan Integrasi
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                    Tiga Layanan Utama TNBTS
+                </h2>
+                <p class="text-slate-600 mt-3 text-base">
+                    Guna kemudahan wisatawan dan peneliti, Balai Besar TNBTS menyediakan sistem pelayanan digital modern terpadu.
+                </p>
+            </div>
+
+            <div class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="group p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-skybrand-300 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-skybrand-100 text-skybrand-600 flex items-center justify-center text-2xl group-hover:bg-skybrand-600 group-hover:text-white transition duration-300 shadow-sm">
+                            <i class="fa-solid fa-ticket-simple"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mt-6">1. Booking Tiket Online</h3>
+                        <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                            Pemesanan tiket kunjungan kawasan Bromo & Semeru secara daring tanpa antre. Sistem pembayaran otomatis dengan e-ticket resmi QR Code.
+                        </p>
+                    </div>
+                    <ul class="mt-6 space-y-2 text-xs font-medium text-slate-500 border-t border-slate-200/60 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-naturegreen-600"></i> Integrasi E-Payment</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-naturegreen-600"></i> Sistem Kuota Harian Lengkap</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-naturegreen-600"></i> Cetak Bukti Instan</li>
+                    </ul>
+                    <a href="#booking-section" class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-skybrand-600 group-hover:text-skybrand-700">
+                        Akses Booking Online <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="group p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-naturegreen-300 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-naturegreen-100 text-naturegreen-600 flex items-center justify-center text-2xl group-hover:bg-naturegreen-600 group-hover:text-white transition duration-300 shadow-sm">
+                            <i class="fa-solid fa-person-hiking"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mt-6">2. Perizinan & Simaksi Pendakian</h3>
+                        <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                            Layanan administrasi Surat Izin Masuk Kawasan Konservasi (SIMAKSI) untuk kegiatan penelitian, liputan komersial, pendakian Semeru, dan event khusus.
+                        </p>
+                    </div>
+                    <ul class="mt-6 space-y-2 text-xs font-medium text-slate-500 border-t border-slate-200/60 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-naturegreen-600"></i> Pengajuan SIMAKSI Online</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-naturegreen-600"></i> Verifikasi Surat Kesehatan</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-naturegreen-600"></i> Regulasi Penelitian & Drone</li>
+                    </ul>
+                    <a href="#kontak" class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-naturegreen-600 group-hover:text-naturegreen-700">
+                        Ajukan Izin Pendakian <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="group p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-skybrand-300 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-skybrand-100 text-skybrand-600 flex items-center justify-center text-2xl group-hover:bg-skybrand-600 group-hover:text-white transition duration-300 shadow-sm">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mt-6">3. Panduan & Aduan Pengunjung</h3>
+                        <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                            Layanan pusat bantuan wisatawan, panduan pemandu lokal / Jeep terakreditasi, serta kanal pengaduan resmi perlindungan kawasan konservasi.
+                        </p>
+                    </div>
+                    <ul class="mt-6 space-y-2 text-xs font-medium text-slate-500 border-t border-slate-200/60 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-naturegreen-600"></i> Pusat Informasi Wisatawan</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-naturegreen-600"></i> Layanan Pengaduan 24 Jam</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-naturegreen-600"></i> Peta Jalur & Petunjuk Keselamatan</li>
+                    </ul>
+                    <a href="#cuaca-keselamatan" class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-skybrand-600 group-hover:text-skybrand-700">
+                        Lihat Panduan & SOP <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Status Buka dan Tutup Kawasan Section -->
+    <section id="status" class="py-20 bg-slate-50 border-y border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between mb-12 gap-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-skybrand-600 bg-skybrand-100 px-3 py-1 rounded-full">
+                        Update Operasional Realtime
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                        Status Buka / Tutup Kawasan TNBTS
+                    </h2>
+                    <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                        Pantau status titik lokasi wisata sebelum merencanakan kunjungan Anda.
+                    </p>
+                </div>
+                <div class="text-xs text-slate-500 flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-naturegreen-500 badge-pulse"></span>
+                    <span>Diperbarui secara berkala oleh Petugas Lapangan</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Status Card 1: Bromo & Sunrise -->
+                <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="p-3 rounded-xl bg-skybrand-50 text-skybrand-600"><i class="fa-solid fa-sun text-xl"></i></span>
+                        <span class="px-3 py-1 text-xs font-extrabold rounded-full bg-naturegreen-100 text-naturegreen-800 border border-naturegreen-200 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-naturegreen-500 animate-ping"></span> TERBUKA
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Kawasan Kawah & Sunrise Bromo</h3>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-clock mr-1"></i> Jam Operasional: 03.00 - 18.00 WIB</p>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-600">
+                        <span class="font-semibold text-slate-700">Catatan:</span> Kuota dibatasi sesuai tiket online. Penanjakan 1, Bukit Cinta, & Kingkong Hill dapat diakses.
+                    </div>
+                </div>
+
+                <!-- Status Card 2: Laut Pasir & Sabana -->
+                <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="p-3 rounded-xl bg-naturegreen-50 text-naturegreen-600"><i class="fa-solid fa-mountain text-xl"></i></span>
+                        <span class="px-3 py-1 text-xs font-extrabold rounded-full bg-naturegreen-100 text-naturegreen-800 border border-naturegreen-200 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-naturegreen-500"></span> TERBUKA
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Laut Pasir & Sabana Teletubbies</h3>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-clock mr-1"></i> Jam Operasional: 06.00 - 17.00 WIB</p>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-600">
+                        <span class="font-semibold text-slate-700">Catatan:</span> Wajib mengutamakan kendaraan terdaftar (Jeep/Motor Trail lokal). Dilarang menyalakan api.
+                    </div>
+                </div>
+
+                <!-- Status Card 3: Ranu Kumbolo & Semeru -->
+                <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="p-3 rounded-xl bg-amber-50 text-amber-600"><i class="fa-solid fa-person-hiking text-xl"></i></span>
+                        <span class="px-3 py-1 text-xs font-extrabold rounded-full bg-amber-100 text-amber-800 border border-amber-200 flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-exclamation text-amber-600"></i> DITUTUP SEMENTARA
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Jalur Pendakian Gn. Semeru</h3>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-clock mr-1"></i> Ranu Kumbolo - Kalimati</p>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-600">
+                        <span class="font-semibold text-slate-700">Catatan:</span> Ditutup akibat peningkatan aktivitas erupsi dan rekondisi ekosistem flora/fauna.
+                    </div>
+                </div>
+
+                <!-- Status Card 4: Air Terjun Madakaripura -->
+                <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="p-3 rounded-xl bg-skybrand-50 text-skybrand-600"><i class="fa-solid fa-water-fall text-xl"></i></span>
+                        <span class="px-3 py-1 text-xs font-extrabold rounded-full bg-naturegreen-100 text-naturegreen-800 border border-naturegreen-200 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-naturegreen-500"></span> TERBUKA
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Air Terjun Madakaripura</h3>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-clock mr-1"></i> Jam Operasional: 07.00 - 16.00 WIB</p>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-600">
+                        <span class="font-semibold text-slate-700">Catatan:</span> Disarankan memakai jas hujan dan helm pelindung kepala dari pemandu lokal.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informasi Harga Tiket Section -->
+    <section id="tiket" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-naturegreen-600 bg-naturegreen-50 px-3 py-1 rounded-full">
+                    Tarif Perda Konservasi
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                    Rincian Harga Tiket Masuk (PNBP)
+                </h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                    Sesuai dengan Peraturan Pemerintah Republik Indonesia tentang Penerimaan Negara Bukan Pajak Kementerian LHK.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <!-- Pricing Table Column (2 cols width) -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Ticket Table: Nusantara vs Mancanegara -->
+                    <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                        <div class="bg-gradient-to-r from-skybrand-900 to-skybrand-700 p-4 text-white font-bold flex items-center justify-between">
+                            <span><i class="fa-solid fa-users mr-2"></i> Tiket Pengunjung / Orang</span>
+                            <span class="text-xs bg-skybrand-600 px-2.5 py-1 rounded-full font-medium">Tarif Per Orang</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm">
+                                <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                                    <tr>
+                                        <th class="p-4">Kategori Wisatawan</th>
+                                        <th class="p-4">Hari Kerja (Weekday)</th>
+                                        <th class="p-4">Hari Libur (Weekend)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 text-slate-700">
+                                    <tr class="hover:bg-white transition">
+                                        <td class="p-4 font-semibold flex items-center gap-2">
+                                            <span class="w-6 h-4 bg-red-500 rounded-xs inline-block border border-slate-300"></span> Wisatawan Nusantara (WNI)
+                                        </td>
+                                        <td class="p-4 font-bold text-skybrand-700">Rp 29.000</td>
+                                        <td class="p-4 font-bold text-naturegreen-700">Rp 34.000</td>
+                                    </tr>
+                                    <tr class="hover:bg-white transition">
+                                        <td class="p-4 font-semibold flex items-center gap-2">
+                                            <i class="fa-solid fa-earth-americas text-skybrand-600"></i> Wisatawan Mancanegara (WNA)
+                                        </td>
+                                        <td class="p-4 font-bold text-skybrand-700">Rp 220.000</td>
+                                        <td class="p-4 font-bold text-naturegreen-700">Rp 320.000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Permits Table -->
+                    <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                        <div class="bg-gradient-to-r from-naturegreen-800 to-naturegreen-600 p-4 text-white font-bold flex items-center justify-between">
+                            <span><i class="fa-solid fa-car-rear mr-2"></i> Retribusi Kendaraan Bermotor</span>
+                            <span class="text-xs bg-naturegreen-700 px-2.5 py-1 rounded-full font-medium">Per Unit Kendaraan</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm">
+                                <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                                    <tr>
+                                        <th class="p-4">Jenis Kendaraan</th>
+                                        <th class="p-4">Tarif Retribusi</th>
+                                        <th class="p-4">Keterangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 text-slate-700">
+                                    <tr class="hover:bg-white transition">
+                                        <td class="p-4 font-semibold"><i class="fa-solid fa-truck-monster mr-2 text-slate-500"></i> Mobil / Jeep 4x4</td>
+                                        <td class="p-4 font-bold text-slate-900">Rp 10.000</td>
+                                        <td class="p-4 text-xs text-slate-500">Melintasi Laut Pasir / Pintu Masuk</td>
+                                    </tr>
+                                    <tr class="hover:bg-white transition">
+                                        <td class="p-4 font-semibold"><i class="fa-solid fa-motorcycle mr-2 text-slate-500"></i> Sepeda Motor / Trail</td>
+                                        <td class="p-4 font-bold text-slate-900">Rp 5.000</td>
+                                        <td class="p-4 text-xs text-slate-500">Per unit sepeda motor</td>
+                                    </tr>
+                                    <tr class="hover:bg-white transition">
+                                        <td class="p-4 font-semibold"><i class="fa-solid fa-bicycle mr-2 text-slate-500"></i> Sepeda Pancal</td>
+                                        <td class="p-4 font-bold text-slate-900">Rp 2.000</td>
+                                        <td class="p-4 text-xs text-slate-500">Sepeda non-mesin</td>
+                                    </tr>
+                                    <tr class="hover:bg-white transition">
+                                        <td class="p-4 font-semibold"><i class="fa-solid fa-horse mr-2 text-slate-500"></i> Kuda Wisata Tengger</td>
+                                        <td class="p-4 font-bold text-slate-900">Rp 1.500</td>
+                                        <td class="p-4 text-xs text-slate-500">Retribusi ternak tunggangan</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Pricing Calculator Card -->
+                <div class="bg-gradient-to-br from-skybrand-900 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 -mr-10 -mt-10 w-40 h-40 bg-skybrand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div>
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+                            <h3 class="text-xl font-bold flex items-center gap-2">
+                                <i class="fa-solid fa-calculator text-naturegreen-400"></i> Hitung Estimasi Tiket
+                            </h3>
+                            <span class="text-xs bg-naturegreen-500/20 text-naturegreen-300 px-2.5 py-1 rounded-full border border-naturegreen-500/30">Kalkulator</span>
+                        </div>
+
+                        <!-- Interactive Form Inside Calculator -->
+                        <form id="ticket-calculator-form" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-sky-200 mb-1">Kategori Wisatawan</label>
+                                <select id="calc-kategori" class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                                    <option value="wni">Nusantara (WNI)</option>
+                                    <option value="wna">Mancanegara (WNA)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-sky-200 mb-1">Kategori Hari Visited</label>
+                                <select id="calc-hari" class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                                    <option value="weekday">Hari Kerja (Weekday)</option>
+                                    <option value="weekend">Hari Libur / Akhir Pekan (Weekend)</option>
+                                </select>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-semibold text-sky-200 mb-1">Jumlah Orang</label>
+                                    <input type="number" id="calc-orang" min="1" value="1" class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-sky-200 mb-1">Jenis Kendaraan</label>
+                                    <select id="calc-kendaraan" class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                                        <option value="none">Tanpa Kendaraan (Jalan)</option>
+                                        <option value="mobil">Mobil / Jeep (Rp 10k)</option>
+                                        <option value="motor">Sepeda Motor (Rp 5k)</option>
+                                        <option value="sepeda">Sepeda (Rp 2k)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Calculated Total Output -->
+                    <div class="mt-8 pt-6 border-t border-white/10">
+                        <div class="text-xs text-sky-200 font-medium">Total Estimasi Pembayaran:</div>
+                        <div class="text-3xl font-extrabold text-naturegreen-400 mt-1" id="calc-total-price">Rp 29.000</div>
+                        <p class="text-[11px] text-slate-400 mt-2">
+                            *Belum termasuk asuransi jiwa opsional (Rp 2.500) & jasa sewa jeep lokal.
+                        </p>
+                        <button type="button" onclick="openBookingModalWithCalc()" class="mt-5 w-full py-3.5 rounded-xl bg-gradient-to-r from-skybrand-500 to-naturegreen-500 hover:from-skybrand-600 hover:to-naturegreen-600 text-white font-extrabold text-sm shadow-md transition">
+                            Lanjut Booking Tiket <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Booking Tiket Online Section -->
+    <section id="booking-section" class="py-16 bg-gradient-to-r from-skybrand-700 via-skybrand-600 to-naturegreen-700 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div class="max-w-2xl text-center lg:text-left">
+                    <span class="px-3 py-1 bg-white/20 text-white text-xs font-bold rounded-full border border-white/30 uppercase tracking-widest">
+                        Pemesanan Resmi Online
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 tracking-tight">
+                        Pesan Tiket Masuk TNBTS Sekarang
+                    </h2>
+                    <p class="mt-3 text-sky-100 text-base leading-relaxed">
+                        Hindari penumpukan antrean di pintu masuk pelabuhan kawasan. Pembelian tiket masuk Bromo Wajib dilakukan secara daring (online) sebelum kedatangan.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                    <button onclick="openBookingModal()" class="px-8 py-4 bg-white text-skybrand-900 hover:bg-sky-50 font-extrabold text-base rounded-2xl shadow-xl transition transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calendar-check text-naturegreen-600 text-xl"></i>
+                        <span>Formulir Booking Tiket</span>
+                    </button>
+                    <a href="#status" class="px-6 py-4 bg-skybrand-900/40 hover:bg-skybrand-900/60 border border-white/30 text-white font-bold text-base rounded-2xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Cek Kuota Harian</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informasi Destinasi Wisata Section -->
+    <section id="destinasi" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-skybrand-600 bg-skybrand-100 px-3 py-1 rounded-full">
+                    Keindahan Eksotis
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                    Destinasi Wisata Populer
+                </h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                    Temukan spot terbaik kawasan Gunung Bromo, Sabana, Lautan Pasir, dan Danau Pegunungan.
+                </p>
+
+                <!-- Filter Category Buttons -->
+                <div class="flex flex-wrap justify-center gap-2 mt-8" id="dest-filters">
+                    <button onclick="filterDestinations('all')" class="dest-filter-btn px-4 py-2 rounded-xl text-xs font-extrabold bg-skybrand-600 text-white shadow-sm transition">Semua Spot</button>
+                    <button onclick="filterDestinations('kawah')" class="dest-filter-btn px-4 py-2 rounded-xl text-xs font-extrabold bg-white text-slate-700 hover:bg-skybrand-50 border border-slate-200 transition">Gunung & Kawah</button>
+                    <button onclick="filterDestinations('sunrise')" class="dest-filter-btn px-4 py-2 rounded-xl text-xs font-extrabold bg-white text-slate-700 hover:bg-skybrand-50 border border-slate-200 transition">Point Sunrise</button>
+                    <button onclick="filterDestinations('sabana')" class="dest-filter-btn px-4 py-2 rounded-xl text-xs font-extrabold bg-white text-slate-700 hover:bg-skybrand-50 border border-slate-200 transition">Danau & Sabana</button>
+                    <button onclick="filterDestinations('airterjun')" class="dest-filter-btn px-4 py-2 rounded-xl text-xs font-extrabold bg-white text-slate-700 hover:bg-skybrand-50 border border-slate-200 transition">Air Terjun</button>
+                </div>
+            </div>
+
+            <!-- Destination Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="destination-grid">
+                
+                <!-- Destination 1 -->
+                <div class="dest-card category-kawah bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://i.pinimg.com/736x/d0/57/42/d057426235f0b63655bc6fc90f48837a.jpg" 
+                             alt="Kawah Gunung Bromo" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                             onerror="this.src='https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=800&q=80'">
+                        <span class="absolute top-4 left-4 bg-skybrand-900/80 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full">
+                            Gunung & Kawah
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Kawah Aktif Gunung Bromo</h3>
+                            <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-location-dot text-naturegreen-600 mr-1"></i> Lautan Pasir Bromo</p>
+                            <p class="text-slate-600 text-sm mt-3 leading-relaxed line-clamp-3">
+                                Fenomena kawah menganga aktif berdiameter sekitar 800 meter dengan raungan khas magma bumi dan tangga beton fenomenal menuju bibir kawah.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-semibold text-slate-500"><i class="fa-solid fa-person-walking mr-1 text-skybrand-600"></i> Trekking 250 Tangga</span>
+                            <button onclick="showDestDetail('kawah-bromo')" class="text-xs font-extrabold text-skybrand-600 hover:text-skybrand-700 flex items-center gap-1">
+                                Detail <i class="fa-solid fa-circle-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 2 -->
+                <div class="dest-card category-sunrise bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://i.pinimg.com/1200x/93/67/1c/93671cb6345b82b0e8724786bbf13913.jpg" 
+                             alt="Penanjakan 1 Sunrise Bromo" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                             onerror="this.src='https://images.unsplash.com/photo-1541088719803-0998b921414a?auto=format&fit=crop&w=800&q=80'">
+                        <span class="absolute top-4 left-4 bg-amber-600/90 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full">
+                            Point Sunrise
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Puncak Penanjakan 1</h3>
+                            <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-location-dot text-naturegreen-600 mr-1"></i> Ketinggian 2.770 MDPL</p>
+                            <p class="text-slate-600 text-sm mt-3 leading-relaxed line-clamp-3">
+                                Spot pandang utama terpuncak untuk menyaksikan Golden Sunrise berlatar laut lautan awan, Batok, Bromo, dan Gunung Semeru gagah di kejauhan.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-semibold text-slate-500"><i class="fa-solid fa-temperature-arrow-down mr-1 text-skybrand-600"></i> Suhu 5°C - 12°C</span>
+                            <button onclick="showDestDetail('penanjakan')" class="text-xs font-extrabold text-skybrand-600 hover:text-skybrand-700 flex items-center gap-1">
+                                Detail <i class="fa-solid fa-circle-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 3 -->
+                <div class="dest-card category-sabana bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://i.pinimg.com/736x/cd/fc/f9/cdfcf91e69b45e7201934ad244063c57.jpg" 
+                             alt="Bukit Teletubbies & Sabana Bromo" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                             onerror="this.src='https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80'">
+                        <span class="absolute top-4 left-4 bg-naturegreen-700/90 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full">
+                            Sabana
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Sabana & Bukit Teletubbies</h3>
+                            <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-location-dot text-naturegreen-600 mr-1"></i> Sisi Selatan Bromo</p>
+                            <p class="text-slate-600 text-sm mt-3 leading-relaxed line-clamp-3">
+                                Hamparan bukit hijau bergelombang nan asri bagai karpet alam. Pemandangan kontras yang memanjakan mata di balik ketegasan lautan pasir.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-semibold text-slate-500"><i class="fa-solid fa-camera mr-1 text-skybrand-600"></i> Best Spot Foto</span>
+                            <button onclick="showDestDetail('teletubbies')" class="text-xs font-extrabold text-skybrand-600 hover:text-skybrand-700 flex items-center gap-1">
+                                Detail <i class="fa-solid fa-circle-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 4 -->
+                <div class="dest-card category-kawah bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://i.pinimg.com/1200x/81/10/95/811095cdd55a6f0f10c7f1cfc4aea35e.jpg" 
+                             alt="Pasir Berbisik Bromo" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                             onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80'">
+                        <span class="absolute top-4 left-4 bg-skybrand-900/80 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full">
+                            Lautan Pasir "Pasir Berbisik"
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Lautan Pasir "Pasir Berbisik"</h3>
+                            <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-location-dot text-naturegreen-600 mr-1"></i> Kaldera Bromo</p>
+                            <p class="text-slate-600 text-sm mt-3 leading-relaxed line-clamp-3">
+                                Hamparan gurun pasir vulkanik seluas 10 kilometer persegi yang mengeluarkan bisikan desir angin saat pasir berhembus.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-semibold text-slate-500"><i class="fa-solid fa-horse mr-1 text-skybrand-600"></i> Berkuda / Jeep</span>
+                            <button onclick="showDestDetail('pasir-berbisik')" class="text-xs font-extrabold text-skybrand-600 hover:text-skybrand-700 flex items-center gap-1">
+                                Detail <i class="fa-solid fa-circle-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 5 -->
+                <div class="dest-card category-sabana bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://i.pinimg.com/1200x/6f/97/65/6f9765fdb0435ce71d62541abdb24ac8.jpg" 
+                             alt="Danau Ranu Kumbolo Semeru" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                             onerror="this.src='https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80'">
+                        <span class="absolute top-4 left-4 bg-naturegreen-700/90 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full">
+                            Danau Ranu Kumbolo
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Danau Ranu Kumbolo</h3>
+                            <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-location-dot text-naturegreen-600 mr-1"></i> Jalur Pendakian Semeru (2.400 MDPL)</p>
+                            <p class="text-slate-600 text-sm mt-3 leading-relaxed line-clamp-3">
+                                Danau air tawar alami seluas 15 hektar di lembah Semeru. Terkenal dengan pesona sunrise di antara dua bukit terbelah dan Tananjakan Cinta.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-semibold text-slate-500"><i class="fa-solid fa-campground mr-1 text-skybrand-600"></i> Area Camping Resm</span>
+                            <button onclick="showDestDetail('ranu-kumbolo')" class="text-xs font-extrabold text-skybrand-600 hover:text-skybrand-700 flex items-center gap-1">
+                                Detail <i class="fa-solid fa-circle-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 6 -->
+                <div class="dest-card category-airterjun bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://i.pinimg.com/736x/91/a6/b7/91a6b732f9cf824da3312f561a2c69fa.jpg" 
+                             alt="Air Terjun Madakaripura" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                             onerror="this.src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80'">
+                        <span class="absolute top-4 left-4 bg-skybrand-600 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full">
+                            Air Terjun Madakaripura
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Air Terjun Madakaripura</h3>
+                            <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-location-dot text-naturegreen-600 mr-1"></i> Lombang, Probolinggo</p>
+                            <p class="text-slate-600 text-sm mt-3 leading-relaxed line-clamp-3">
+                                Air terjun tertutup tebing melingkar setinggi 200 meter. Lokasi bersejarah yang diyakini tempat pertapaan Mahapatih Gajah Mada.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-semibold text-slate-500"><i class="fa-solid fa-cloud-rain mr-1 text-skybrand-600"></i> Tirta Bertabur</span>
+                            <button onclick="showDestDetail('madakaripura')" class="text-xs font-extrabold text-skybrand-600 hover:text-skybrand-700 flex items-center gap-1">
+                                Detail <i class="fa-solid fa-circle-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Informasi Cuaca dan Keselamatan Section -->
+    <section id="cuaca-keselamatan" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Weather Widget Column (5 cols) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-skybrand-600 bg-skybrand-100 px-3 py-1 rounded-full">
+                            Prakiraan Cuaca
+                        </span>
+                        <h2 class="text-3xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                            Cuaca Kawasan Hari Ini
+                        </h2>
+                        <p class="text-slate-600 text-sm mt-2">
+                            Estimasi cuaca dari BMKG untuk titik lokasi strategis TNBTS.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Weather Card -->
+                    <div class="bg-gradient-to-br from-skybrand-900 via-skybrand-800 to-slate-900 text-white p-6 sm:p-8 rounded-3xl shadow-xl border border-skybrand-700">
+                        <!-- Spot Selector Tabs -->
+                        <div class="flex space-x-2 border-b border-white/10 pb-4 mb-6 overflow-x-auto text-xs font-semibold">
+                            <button onclick="switchWeather('penanjakan')" id="wtab-penanjakan" class="px-3 py-1.5 rounded-lg bg-white/20 text-white transition whitespace-nowrap">Penanjakan</button>
+                            <button onclick="switchWeather('kawah')" id="wtab-kawah" class="px-3 py-1.5 rounded-lg text-sky-200 hover:bg-white/10 transition whitespace-nowrap">Kawah Bromo</button>
+                            <button onclick="switchWeather('ranupani')" id="wtab-ranupani" class="px-3 py-1.5 rounded-lg text-sky-200 hover:bg-white/10 transition whitespace-nowrap">Ranu Pani</button>
+                        </div>
+
+                        <!-- Weather Content Box -->
+                        <div id="weather-display" class="space-y-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="text-xl font-bold" id="w-location">Penanjakan 1 (2.770 MDPL)</h4>
+                                    <p class="text-xs text-sky-200 mt-1" id="w-condition-desc">Cerah Berawan / Angin Dingin</p>
+                                </div>
+                                <div class="text-4xl text-amber-300">
+                                    <i class="fa-solid fa-cloud-sun-rain" id="w-icon"></i>
+                                </div>
+                            </div>
+
+                            <div class="flex items-baseline space-x-3">
+                                <span class="text-5xl font-extrabold tracking-tight" id="w-temp">8°C</span>
+                                <span class="text-xs text-sky-200">Min: 4°C | Maks: 14°C</span>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-3 pt-4 border-t border-white/10 text-center text-xs">
+                                <div class="p-2 rounded-xl bg-white/5">
+                                    <div class="text-sky-300"><i class="fa-solid fa-wind mr-1"></i> Kecepatan</div>
+                                    <div class="font-bold mt-1" id="w-wind">15 km/jam</div>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white/5">
+                                    <div class="text-sky-300"><i class="fa-solid fa-droplet mr-1"></i> Kelembapan</div>
+                                    <div class="font-bold mt-1" id="w-humidity">78%</div>
+                                </div>
+                                <div class="p-2 rounded-xl bg-white/5">
+                                    <div class="text-sky-300"><i class="fa-solid fa-eye mr-1"></i> Visibilitas</div>
+                                    <div class="font-bold mt-1" id="w-visibility">8 km</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs leading-relaxed flex items-start gap-3">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-600 text-lg mt-0.5"></i>
+                        <div>
+                            <span class="font-bold">Peringatan Embun Upas (Frost):</span> Pada bulan Juli - September, suhu malam hingga pagi dapat mencapai 0°C - -2°C di lautan pasir. Persiapkan pakaian hangat ekstra.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Safety Rules & SOP Column (7 cols) -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-naturegreen-600 bg-naturegreen-50 px-3 py-1 rounded-full">
+                            SOP & Regulasi Pengunjung
+                        </span>
+                        <h2 class="text-3xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                            Aturan Keselamatan & Kode Etik
+                        </h2>
+                        <p class="text-slate-600 text-sm mt-2">
+                            Seluruh pengunjung wajib mematuhi panduan konservasi demi keamanan bersama dan kelestarian ekosistem.
+                        </p>
+                    </div>
+
+                    <!-- Accordion / Grid Rules -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                            <div class="w-10 h-10 rounded-xl bg-naturegreen-100 text-naturegreen-700 flex items-center justify-center font-bold mb-3">
+                                <i class="fa-solid fa-vest"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm">Perlengkapan Wajib</h4>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                Jaket tebal penahan angin, sarung tangan, kupluk, masker debu vulkanik, sepatu gunung anti-slip, dan senter kepala.
+                            </p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                            <div class="w-10 h-10 rounded-xl bg-skybrand-100 text-skybrand-700 flex items-center justify-center font-bold mb-3">
+                                <i class="fa-solid fa-trash-can-arrow-up"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm">Zero Waste (Bawa Sampahmu)</h4>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                Dilarang keras membuang sampah sembarangan. Setiap sampah plastik wajib dibawa kembali keluar dari batas kawasan taman nasional.
+                            </p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold mb-3">
+                                <i class="fa-solid fa-fire-flame-curved"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm">Bahaya Kebakaran Hutan</h4>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                Dilarang membuat api unggun di sembarang tempat, menyalakan kembang api, flare, atau membuang puntung rokok sembarangan.
+                            </p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                            <div class="w-10 h-10 rounded-xl bg-red-100 text-red-700 flex items-center justify-center font-bold mb-3">
+                                <i class="fa-solid fa-ban"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm">Radius Bahaya Kawah</h4>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                Dilarang menembus batas zona bahaya 1 km dari pusat kawah aktif Bromo sesuai arahan PVMBG dan petugas TNBTS.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Callout Emergency Box -->
+                    <div class="p-6 rounded-2xl bg-gradient-to-r from-skybrand-50 to-naturegreen-50 border border-skybrand-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-skybrand-600 text-white flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-kit-medical"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Butuh Pertolongan Darurat?</h4>
+                                <p class="text-xs text-slate-600">Tim Pos SAR TNBTS siap melayani kendala medis atau darurat di kawasan.</p>
+                            </div>
+                        </div>
+                        <a href="tel:08113610000" class="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shrink-0 flex items-center gap-2 transition">
+                            <i class="fa-solid fa-phone-volume"></i> Panggil SAR TNBTS
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak dan Lokasi Section -->
+    <section id="kontak" class="py-20 bg-slate-50 border-t border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-skybrand-600 bg-skybrand-100 px-3 py-1 rounded-full">
+                    Pusat Informasi & Bantuan
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                    Hubungi Balai Besar TNBTS
+                </h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                    Sampaikan pertanyaan, permohonan perizinan khusus, atau aduan layanan kepada tim kami.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Contact Info Card (5 cols) -->
+                <div class="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                    <h3 class="text-xl font-bold text-slate-900 border-b border-slate-100 pb-4">Kantor Balai Besar TNBTS</h3>
+
+                    <div class="space-y-4 text-sm text-slate-600">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-skybrand-50 text-skybrand-600 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-800 block text-xs uppercase tracking-wider text-slate-400">Alamat Utama</span>
+                                Jl. Raden Intan No.6, Polowijen, Kec. Blimbing, Kota Malang, Jawa Timur 65126
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-naturegreen-50 text-naturegreen-600 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-800 block text-xs uppercase tracking-wider text-slate-400">Call Center & WhatsApp</span>
+                                (0341) 491033 / Hotline: 0811-3610-000
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-skybrand-50 text-skybrand-600 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-800 block text-xs uppercase tracking-wider text-slate-400">Email Resmi</span>
+                                bb-tnbts@ksdae.menlhk.go.id / tnbromotenggersemeru@gmail.com
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-800 block text-xs uppercase tracking-wider text-slate-400">Jam Layanan Kantor</span>
+                                Senin - Jumat: 08.00 - 16.00 WIB
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-3">Media Sosial Resmi</span>
+                        <div class="flex items-center space-x-3">
+                            <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-skybrand-600 hover:text-white text-slate-600 flex items-center justify-center transition">
+                                <i class="fa-brands fa-instagram text-lg"></i>
+                            </a>
+                            <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-skybrand-600 hover:text-white text-slate-600 flex items-center justify-center transition">
+                                <i class="fa-brands fa-facebook-f text-lg"></i>
+                            </a>
+                            <a href="https://youtube.com" target="_blank" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-red-600 hover:text-white text-slate-600 flex items-center justify-center transition">
+                                <i class="fa-brands fa-youtube text-lg"></i>
+                            </a>
+                            <a href="https://twitter.com" target="_blank" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-skybrand-600 hover:text-white text-slate-600 flex items-center justify-center transition">
+                                <i class="fa-brands fa-x-twitter text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Contact Form (7 cols) -->
+                <div class="lg:col-span-7 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Kirim Pesan & Pengaduan</h3>
+                    <p class="text-xs text-slate-500 mb-6">Isi formulir di bawah ini untuk konsultasi, permohonan informasi, atau aduan kendala.</p>
+
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Nama Lengkap *</label>
+                                <input type="text" required placeholder="Contoh: Budi Santoso" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Nomor WhatsApp / Telp *</label>
+                                <input type="tel" required placeholder="Contoh: 08123456789" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Email *</label>
+                            <input type="email" required placeholder="nama@email.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Kategori Keperluan</label>
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                                <option>Informasi Umum Wisata</option>
+                                <option>Kendala Booking Tiket Online</option>
+                                <option>Permohonan SIMAKSI Penelitian / Shooting</option>
+                                <option>Aduan Keamanan / Pelanggaran Kawasan</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Pesan / Aduan *</label>
+                            <textarea rows="4" required placeholder="Tuliskan rincian pertanyaan atau keluhan Anda secara lengkap..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-skybrand-500"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-skybrand-600 hover:bg-skybrand-700 text-white font-extrabold text-sm shadow-md transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Kirim Pesan Sekarang</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Col 1 -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-skybrand-600 to-naturegreen-500 flex items-center justify-center text-white font-bold">
+                            <i class="fa-solid fa-mountain-sun"></i>
+                        </div>
+                        <span class="text-xl font-extrabold text-white tracking-tight">TNBTS</span>
+                    </div>
+                    <p class="text-xs leading-relaxed text-slate-400">
+                        Sistem Informasi Resmi Taman Nasional Bromo Tengger Semeru. Terdedikasi untuk perlindungan keanekaragaman hayati dan pelayanan publik berkualitas.
+                    </p>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4 border-b border-slate-800 pb-2">Navigasi Cepat</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#beranda" class="hover:text-white transition">Beranda Utama</a></li>
+                        <li><a href="#layanan" class="hover:text-white transition">Tiga Layanan Integrasi</a></li>
+                        <li><a href="#status" class="hover:text-white transition">Status Buka/Tutup Kawasan</a></li>
+                        <li><a href="#tiket" class="hover:text-white transition">Daftar Harga Tiket Masuk</a></li>
+                        <li><a href="#destinasi" class="hover:text-white transition">Galeri Destinasi Wisata</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4 border-b border-slate-800 pb-2">Akses Wisatawan</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#booking-section" class="hover:text-white transition">Pesan Tiket Online</a></li>
+                        <li><a href="#cuaca-keselamatan" class="hover:text-white transition">Prakiraan Cuaca BMKG</a></li>
+                        <li><a href="#cuaca-keselamatan" class="hover:text-white transition">SOP & Kode Etik Kawasan</a></li>
+                        <li><a href="#kontak" class="hover:text-white transition">Kontak Pos SAR Lapangan</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4 border-b border-slate-800 pb-2">Kementerian LHK</h4>
+                    <p class="text-xs text-slate-400 mb-3">
+                        Direktorat Jenderal Konservasi Sumber Daya Alam dan Ekosistem (KSDAE).
+                    </p>
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 text-xs font-semibold text-naturegreen-400">
+                        <i class="fa-solid fa-leaf"></i> Bangga Melestarikan Alam
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                    &copy; 2026 Balai Besar Taman Nasional Bromo Tengger Semeru. Hak Cipta Dilindungi.
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-slate-300">Kebijakan Privasi</a>
+                    <span>•</span>
+                    <a href="#" class="hover:text-slate-300">Syarat & Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL: Booking Tiket Online Simulator Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm overflow-y-auto">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden border border-slate-200 transform transition-all my-8">
+            <div class="bg-gradient-to-r from-skybrand-900 via-skybrand-700 to-naturegreen-700 p-6 text-white flex items-center justify-between">
+                <div>
+                    <h3 class="text-xl font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-ticket text-naturegreen-400"></i> Formulir Booking Tiket Online
+                    </h3>
+                    <p class="text-xs text-sky-100 mt-1">Sistem Pendaftaran Kuota Resmi TNBTS</p>
+                </div>
+                <button onclick="closeBookingModal()" class="w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="booking-form-modal" onsubmit="handleBookingSubmit(event)" class="p-6 space-y-4 text-sm text-slate-700">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-1">Pilih Tanggal Kunjungan *</label>
+                        <input type="date" required id="modal-date" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-1">Pintu Masuk Site *</label>
+                        <select required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                            <option value="cemoro-lawang">Cemoro Lawang (Probolinggo)</option>
+                            <option value="wonokitri">Wonokitri (Pasuruan)</option>
+                            <option value="cemorosewu">Jemplang / Tumpang (Malang)</option>
+                            <option value="senduro">Senduro (Lumajang)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-1">Nama Ketua Rombongan *</label>
+                        <input type="text" required placeholder="Sesuai NIK / Paspor" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-1">Nomor NIK / KTP / Paspor *</label>
+                        <input type="text" required placeholder="16 Digit NIK" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-1">Jumlah Anggota</label>
+                        <input type="number" min="1" max="20" value="1" id="m-orang" onchange="recalculateModalPrice()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-1">Kategori Pengunjung</label>
+                        <select id="m-kategori" onchange="recalculateModalPrice()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                            <option value="wni">Nusantara (WNI)</option>
+                            <option value="wna">Mancanegara (WNA)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-1">Hari Kunjungan</label>
+                        <select id="m-hari" onchange="recalculateModalPrice()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-skybrand-500">
+                            <option value="weekday">Hari Kerja</option>
+                            <option value="weekend">Hari Libur / Akhir Pekan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-skybrand-50 border border-skybrand-200 flex items-center justify-between">
+                    <div>
+                        <span class="text-xs text-slate-500 block">Total Pembayaran Tiket:</span>
+                        <span class="text-2xl font-extrabold text-skybrand-900" id="modal-total-display">Rp 29.000</span>
+                    </div>
+                    <span class="text-xs text-naturegreen-700 bg-naturegreen-100 px-3 py-1 rounded-full font-bold">
+                        <i class="fa-solid fa-shield-halved mr-1"></i> Asuransi Tercover
+                    </span>
+                </div>
+
+                <div class="text-xs text-slate-500 space-y-1">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" required class="rounded text-skybrand-600 focus:ring-skybrand-500">
+                        <span>Saya menyetujui seluruh <a href="#cuaca-keselamatan" class="text-skybrand-600 underline">SOP & Peraturan Konservasi TNBTS</a>.</span>
+                    </label>
+                </div>
+
+                <div class="pt-2 flex justify-end gap-3">
+                    <button type="button" onclick="closeBookingModal()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-bold hover:bg-slate-100">Batal</button>
+                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-skybrand-600 to-naturegreen-600 text-white font-extrabold shadow-md hover:from-skybrand-700 hover:to-naturegreen-700">
+                        Konfirmasi & Bayar <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: Destination Detail Lightbox Modal -->
+    <div id="dest-detail-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm overflow-y-auto">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden border border-slate-200 my-8">
+            <div class="relative h-64">
+                <img id="detail-img" src="" alt="" class="w-full h-full object-cover">
+                <button onclick="closeDestDetail()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-900/60 text-white hover:bg-slate-900 flex items-center justify-center backdrop-blur-md transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <span id="detail-badge" class="absolute bottom-4 left-4 bg-skybrand-900/90 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-md">
+                    Destinasi Wisata
+                </span>
+            </div>
+
+            <div class="p-6 space-y-4">
+                <h3 id="detail-title" class="text-2xl font-extrabold text-slate-900">Judul Destinasi</h3>
+                <p id="detail-location" class="text-xs font-bold text-naturegreen-700 flex items-center gap-1">
+                    <i class="fa-solid fa-location-dot"></i> Lokasi
+                </p>
+
+                <p id="detail-desc" class="text-sm text-slate-600 leading-relaxed">
+                    Deskripsi lengkap destinasi...
+                </p>
+
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-2">
+                    <div class="font-bold text-slate-800"><i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i> Tips Kunjungan & Aksesibilitas:</div>
+                    <p id="detail-tips" class="text-slate-600">Tips berkunjung...</p>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 flex justify-between items-center">
+                    <button onclick="closeDestDetail()" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs">Tutup</button>
+                    <a href="#booking-section" onclick="closeDestDetail()" class="px-6 py-2.5 rounded-xl bg-skybrand-600 hover:bg-skybrand-700 text-white font-extrabold text-xs shadow-md">
+                        Pesan Tiket Kunjungan <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast Box -->
+    <div id="toast-notif" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-700">
+        <i class="fa-solid fa-circle-check text-naturegreen-400 text-xl" id="toast-icon"></i>
+        <div>
+            <div class="text-xs font-bold" id="toast-title">Pesan Berhasil</div>
+            <div class="text-[11px] text-slate-300" id="toast-message">Permintaan Anda telah diproses.</div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. Mobile Menu Toggle Logic ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            });
+        });
+
+        // --- 2. Interactive Ticket Calculator Logic ---
+        const calcKategori = document.getElementById('calc-kategori');
+        const calcHari = document.getElementById('calc-hari');
+        const calcOrang = document.getElementById('calc-orang');
+        const calcKendaraan = document.getElementById('calc-kendaraan');
+        const calcTotalPrice = document.getElementById('calc-total-price');
+
+        function calculateTicket() {
+            const kat = calcKategori.value;
+            const hari = calcHari.value;
+            const jmlOrang = parseInt(calcOrang.value) || 1;
+            const kendaraan = calcKendaraan.value;
+
+            let hargaPerOrang = 0;
+            if (kat === 'wni') {
+                hargaPerOrang = (hari === 'weekday') ? 29000 : 34000;
+            } else {
+                hargaPerOrang = (hari === 'weekday') ? 220000 : 320000;
+            }
+
+            let hargaKendaraan = 0;
+            if (kendaraan === 'mobil') hargaKendaraan = 10000;
+            else if (kendaraan === 'motor') hargaKendaraan = 5000;
+            else if (kendaraan === 'sepeda') hargaKendaraan = 2000;
+
+            const total = (hargaPerOrang * jmlOrang) + hargaKendaraan;
+            calcTotalPrice.textContent = 'Rp ' + total.toLocaleString('id-ID');
+        }
+
+        [calcKategori, calcHari, calcOrang, calcKendaraan].forEach(element => {
+            element.addEventListener('change', calculateTicket);
+            element.addEventListener('input', calculateTicket);
+        });
+
+        // --- 3. Booking Modal Logic ---
+        const bookingModal = document.getElementById('booking-modal');
+        const modalDateInput = document.getElementById('modal-date');
+
+        // Set default date to tomorrow
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        modalDateInput.value = tomorrow.toISOString().split('T')[0];
+
+        function openBookingModal() {
+            bookingModal.classList.remove('hidden');
+            recalculateModalPrice();
+        }
+
+        function openBookingModalWithCalc() {
+            document.getElementById('m-kategori').value = calcKategori.value;
+            document.getElementById('m-hari').value = calcHari.value;
+            document.getElementById('m-orang').value = calcOrang.value;
+            openBookingModal();
+        }
+
+        function closeBookingModal() {
+            bookingModal.classList.add('hidden');
+        }
+
+        function recalculateModalPrice() {
+            const kat = document.getElementById('m-kategori').value;
+            const hari = document.getElementById('m-hari').value;
+            const orang = parseInt(document.getElementById('m-orang').value) || 1;
+
+            let price = 0;
+            if (kat === 'wni') {
+                price = (hari === 'weekday') ? 29000 : 34000;
+            } else {
+                price = (hari === 'weekday') ? 220000 : 320000;
+            }
+
+            const total = price * orang;
+            document.getElementById('modal-total-display').textContent = 'Rp ' + total.toLocaleString('id-ID');
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            closeBookingModal();
+            const bookingCode = 'TNBTS-' + Math.floor(100000 + Math.random() * 900000);
+            showToast('Booking Berhasil Ditentukan!', `Kode Booking Anda: ${bookingCode}. Silakan lakukan pembayaran e-payment.`);
+        }
+
+        // --- 4. Destination Filter Logic ---
+        function filterDestinations(category) {
+            const cards = document.querySelectorAll('.dest-card');
+            const buttons = document.querySelectorAll('.dest-filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-skybrand-600', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-700');
+            });
+
+            event.currentTarget.classList.remove('bg-white', 'text-slate-700');
+            event.currentTarget.classList.add('bg-skybrand-600', 'text-white');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(`category-${category}`)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // --- 5. Destination Detail Lightbox Modal ---
+        const destDetails = {
+            'kawah-bromo': {
+                title: 'Kawah Aktif Gunung Bromo',
+                location: 'Lautan Pasir Bromo (2.329 MDPL)',
+                badge: 'Gunung & Kawah',
+                img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
+                desc: 'Kawah Bromo merupakan kawah vulkanik aktif yang selalu mengeluarkan hembusan asap putih pekat. Pengunjung dapat menaiki 250 anak tangga beton untuk berdiri tepat di pinggir kawah dan menyaksikan keagungan alam purba.',
+                tips: 'Disarankan memakai masker pelindung debu/belerang dan kacamata. Waktu terbaik adalah pagi hari sebelum batas hembusan angin kencang.'
+            },
+            'penanjakan': {
+                title: 'Puncak Penanjakan 1',
+                location: 'Kabupaten Pasuruan (2.770 MDPL)',
+                badge: 'Point Sunrise',
+                img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+                desc: 'Titik pandang tertinggi dan paling populer di Bromo. Menawarkan latar pemandangan ikonis laut awan dengan kemegahan Gunung Batok, Kawah Bromo, dan Puncak Semeru dalam satu hamparan lanskap.',
+                tips: 'Tiba di lokasi sebelum pukul 04.00 WIB untuk mendapatkan tempat terbaik. Gunakan pakaian hangat berlapis karena suhu dingin membekukan.'
+            },
+            'teletubbies': {
+                title: 'Sabana & Bukit Teletubbies',
+                location: 'Sisi Selatan Kaldera Bromo',
+                badge: 'Danau & Sabana',
+                img: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80',
+                desc: 'Bukit-bukit hijau bergelombang yang menyerupai lanskap dalam serial Teletubbies. Kontras yang indah setelah melintasi padang pasir hitam Bromo.',
+                tips: 'Bulan terbaik kunjungan adalah Januari - Mei saat rerumputan berwarna hijau segar. Sangat cocok untuk fotografi dan piknik santai.'
+            },
+            'pasir-berbisik': {
+                title: 'Lautan Pasir (Pasir Berbisik)',
+                location: 'Kaldera Bromo',
+                badge: 'Gunung & Kawah',
+                img: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80',
+                desc: 'Hamparan padang pasir vulkanik seluas 10 km² yang mengeluarkan suara mendesis unik saat terhempas angin. Terkenal sebagai lokasi syuting film legendaris.',
+                tips: 'Nikmati sensasi berkuda atau menyewa jeep 4x4 untuk foto estetik. Jaga kebersihan dan dilarang membuang plastik.'
+            },
+            'ranu-kumbolo': {
+                title: 'Danau Ranu Kumbolo',
+                location: 'Jalur Pendakian Semeru (2.400 MDPL)',
+                badge: 'Danau & Sabana',
+                img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
+                desc: 'Danau surgawi di kaki Puncak Mahameru. Airnya yang jernih memantulkan cahaya bintang malam dan sunrise dari celah dua bukit kembar.',
+                tips: 'Dilarang berenang atau mencuci langsung di air danau demi menjaga kemurnian danau sakral ini.'
+            },
+            'madakaripura': {
+                title: 'Air Terjun Madakaripura',
+                location: 'Kecamatan Lumbang, Probolinggo',
+                badge: 'Air Terjun',
+                img: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80',
+                desc: 'Air terjun abadi setinggi 200 meter yang membentuk tirai air alami di tebing melingkar. Diyakini sebagai tempat petilasan Patih Gajah Mada.',
+                tips: 'Siapkan baju ganti, sandal gunung anti-licin, dan kantong anti-air untuk ponsel Anda.'
+            }
+        };
+
+        const destModal = document.getElementById('dest-detail-modal');
+
+        function showDestDetail(key) {
+            const data = destDetails[key];
+            if (!data) return;
+
+            document.getElementById('detail-img').src = data.img;
+            document.getElementById('detail-badge').textContent = data.badge;
+            document.getElementById('detail-title').textContent = data.title;
+            document.getElementById('detail-location').innerHTML = `<i class="fa-solid fa-location-dot"></i> ${data.location}`;
+            document.getElementById('detail-desc').textContent = data.desc;
+            document.getElementById('detail-tips').textContent = data.tips;
+
+            destModal.classList.remove('hidden');
+        }
+
+        function closeDestDetail() {
+            destModal.classList.add('hidden');
+        }
+
+        // --- 6. Interactive Weather Switcher ---
+        const weatherData = {
+            'penanjakan': {
+                loc: 'Penanjakan 1 (2.770 MDPL)',
+                desc: 'Cerah Berawan / Angin Dingin',
+                temp: '8°C',
+                range: 'Min: 4°C | Maks: 14°C',
+                wind: '15 km/jam',
+                humidity: '78%',
+                visibility: '8 km',
+                icon: 'fa-cloud-sun-rain'
+            },
+            'kawah': {
+                loc: 'Kawah Bromo (2.329 MDPL)',
+                desc: 'Cerah Berasap Vulkanik Tipis',
+                temp: '12°C',
+                range: 'Min: 8°C | Maks: 18°C',
+                wind: '22 km/jam',
+                humidity: '65%',
+                visibility: '10 km',
+                icon: 'fa-sun'
+            },
+            'ranupani': {
+                loc: 'Desa Ranu Pani (2.100 MDPL)',
+                desc: 'Sejuk Berawan / Kabut Lembut',
+                temp: '10°C',
+                range: 'Min: 6°C | Maks: 16°C',
+                wind: '10 km/jam',
+                humidity: '85%',
+                visibility: '6 km',
+                icon: 'fa-cloud'
+            }
+        };
+
+        function switchWeather(key) {
+            const w = weatherData[key];
+            if (!w) return;
+
+            document.getElementById('w-location').textContent = w.loc;
+            document.getElementById('w-condition-desc').textContent = w.desc;
+            document.getElementById('w-temp').textContent = w.temp;
+            document.getElementById('w-wind').textContent = w.wind;
+            document.getElementById('w-humidity').textContent = w.humidity;
+            document.getElementById('w-visibility').textContent = w.visibility;
+            document.getElementById('w-icon').className = `fa-solid ${w.icon}`;
+
+            ['penanjakan', 'kawah', 'ranupani'].forEach(k => {
+                const btn = document.getElementById(`wtab-${k}`);
+                if (k === key) {
+                    btn.className = 'px-3 py-1.5 rounded-lg bg-white/20 text-white transition whitespace-nowrap font-bold';
+                } else {
+                    btn.className = 'px-3 py-1.5 rounded-lg text-sky-200 hover:bg-white/10 transition whitespace-nowrap';
+                }
+            });
+        }
+
+        // --- 7. Contact Form Handler ---
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contact-form').reset();
+            showToast('Pesan Terkirim!', 'Tim Balai Besar TNBTS akan menghubungi WhatsApp/Email Anda segera.');
+        }
+
+        // --- 8. Notification Toast Helper ---
+        function showToast(title, message) {
+            const toast = document.getElementById('toast-notif');
+            document.getElementById('toast-title').textContent = title;
+            document.getElementById('toast-message').textContent = message;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 4500);
+        }
+
+        // Initialize Calculator
+        calculateTicket();
+    </script>
+</body>
+</html>
